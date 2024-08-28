@@ -10,7 +10,6 @@ import 'package:friend_private/backend/schema/memory.dart';
 import 'package:friend_private/backend/schema/plugin.dart';
 import 'package:friend_private/main.dart';
 import 'package:friend_private/pages/capture/connect.dart';
-import 'package:friend_private/pages/capture/page.dart';
 import 'package:friend_private/pages/chat/page.dart';
 import 'package:friend_private/pages/home/device.dart';
 import 'package:friend_private/pages/memories/page.dart';
@@ -31,8 +30,6 @@ import 'package:gradient_borders/gradient_borders.dart';
 import 'package:instabug_flutter/instabug_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
-
-GlobalKey<CapturePageState> capturePageKey = GlobalKey();
 
 class HomePageWrapper extends StatefulWidget {
   const HomePageWrapper({super.key});
@@ -256,9 +253,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                             MemoriesPage(
                               textFieldFocusNode: memoriesTextFieldFocusNode,
                             ),
-                            CapturePage(
-                              key: capturePageKey,
-                            ),
                             ChatPage(
                               key: chatPageKey,
                               textFieldFocusNode: chatTextFieldFocusNode,
@@ -304,26 +298,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver, Ticker
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                           color: provider.selectedIndex == 0 ? Colors.white : Colors.grey,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: MaterialButton(
-                                    onPressed: () => _tabChange(1),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                      ),
-                                      child: Text(
-                                        'Capture',
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          color: provider.selectedIndex == 1 ? Colors.white : Colors.grey,
                                           fontSize: 16,
                                         ),
                                       ),
